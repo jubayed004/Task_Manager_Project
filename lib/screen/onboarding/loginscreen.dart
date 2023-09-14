@@ -32,7 +32,8 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {Loading=true;});
       bool res=await LoginRequest(FormValues);
       if(res==true){
-        Navigator.pushNamedAndRemoveUntil(context, "/", (route) => false);
+        Navigator.pushNamedAndRemoveUntil(context, "/newTaskList", (route) => false);
+        setState(() {Loading=false;});
       }
       else{
         setState(() {Loading=false;});
@@ -47,8 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
              ScreenBackground(context),
              Container(
                alignment: Alignment.center,
-               child:
-               Loading?(Center(child: CircularProgressIndicator())):(
+               child: Loading?(Center(child: CircularProgressIndicator())):(
              SingleChildScrollView(
                  padding: EdgeInsets.all(30),
                  child: Column(
@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                    children: [
                      Text("Get Started With", style: Head1Text(colorDarkBlue)),
                      SizedBox(height: 1),
-                     Text("Learn with rabbil hasan", style: Head6Text(colorLightGray)),
+                     Text("Learn with jubayed islam", style: Head6Text(colorLightGray)),
                      SizedBox(height: 20),
                      TextFormField(
                        onChanged: (Textvalue){
@@ -74,13 +74,14 @@ class _LoginScreenState extends State<LoginScreen> {
                        decoration: AppInputDecoration("Password"),
                      ),
                      SizedBox(height: 20),
-                     Container(child: ElevatedButton(
-                       style: AppButtonStyle(),
-                       child: SuccessButtonChild('Login'),
-                       onPressed: (){
-                         FormOnSubmit();
-                       },
-                     ),
+                     Container(
+                       child: ElevatedButton(
+                         style: AppButtonStyle(),
+                         child: SuccessButtonChild('Login'),
+                         onPressed: (){
+                            FormOnSubmit();
+                         },
+                       ),
                      ),
                      SizedBox(height: 20),
                      Container(
@@ -114,7 +115,7 @@ class _LoginScreenState extends State<LoginScreen> {
                    ],
                  ),
                )),
-    )
+             )
            ],
          ),
     );

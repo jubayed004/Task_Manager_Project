@@ -138,6 +138,7 @@ ButtonStyle AppStatusButtonStyle(btnColor){
 
 TextStyle ButtonTextStyle(){
   return TextStyle(
+      color: Colors.white,
       fontSize: 14,
       fontFamily: 'poppins',
       fontWeight: FontWeight.w400
