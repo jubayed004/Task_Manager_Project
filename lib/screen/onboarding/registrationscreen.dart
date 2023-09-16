@@ -12,7 +12,7 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  Map<String,String> FormValues={"email":"", "password":""};
+  Map<String,String> FormValues={"email":"", "firstName":"","lastName":"","mobile":"","password":"","photo":"","cpassword":""};
   bool Loading=false;
 
   InputOnChange(MapKey, Textvalue){
@@ -58,7 +58,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Stack(
+      body: Stack(
         children: [
           ScreenBackground(context),
           Container(
@@ -73,12 +73,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         children: [
                           Text("Join With Us", style: Head1Text(colorDarkBlue)),
                           SizedBox(height: 1),
-                          Text("Learn with jubayed islam", style: Head6Text(colorLightGray)),
+                          Text("Learn with rabbil hasan", style: Head6Text(colorLightGray)),
 
                           SizedBox(height: 20),
                           TextFormField(
                               decoration: AppInputDecoration("Email Address"),
                               onChanged: (Textvalue){
+                                InputOnChange("email",Textvalue);
                               }
                           ),
 
@@ -86,6 +87,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           TextFormField(
                               decoration: AppInputDecoration("First Name"),
                               onChanged: (Textvalue){
+                                InputOnChange("firstName",Textvalue);
                               }
                           ),
 
@@ -93,6 +95,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           TextFormField(
                               decoration: AppInputDecoration("Last Name"),
                               onChanged: (Textvalue){
+                                InputOnChange("lastName",Textvalue);
                               }
                           ),
 
@@ -100,7 +103,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           TextFormField(
                               decoration: AppInputDecoration("Mobile"),
                               onChanged: (Textvalue){
-
+                                InputOnChange("mobile",Textvalue);
                               }
                           ),
 
@@ -108,7 +111,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           TextFormField(
                               decoration: AppInputDecoration("Password"),
                               onChanged: (Textvalue){
-
+                                InputOnChange("password",Textvalue);
                               }
                           ),
 
@@ -117,7 +120,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                           TextFormField(
                               decoration: AppInputDecoration("Confirm Password"),
                               onChanged: (Textvalue){
-
+                                InputOnChange("cpassword",Textvalue);
                               }
                           ),
 
@@ -126,7 +129,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             style: AppButtonStyle(),
                             child: SuccessButtonChild('Registration'),
                             onPressed: (){
-                              Navigator.push(context, MaterialPageRoute(builder: (_)=>LoginScreen()));
+                              FormOnSubmit();
                             },
                           ),)
 

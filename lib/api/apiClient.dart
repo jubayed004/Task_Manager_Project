@@ -31,6 +31,7 @@ Future<bool> RegistrationRequest(FormValues) async{
   var ResultBody=json.decode(response.body);
   if(ResultCode==200 && ResultBody['status']=="success"){
     SuccessToast("Request Success");
+    print(response.body);
     return true;
   }
   else{

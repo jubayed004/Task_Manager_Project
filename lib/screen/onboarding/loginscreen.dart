@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taskmanager/api/apiClient.dart';
-import 'package:taskmanager/screen/onboarding/registrationscreen.dart';
 import 'package:taskmanager/style/style.dart';
-
-import 'emailverificationscreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -48,24 +45,24 @@ class _LoginScreenState extends State<LoginScreen> {
              ScreenBackground(context),
              Container(
                alignment: Alignment.center,
-               child: Loading?(Center(child: CircularProgressIndicator())):(
+               child: Loading?(const Center(child: CircularProgressIndicator())):(
              SingleChildScrollView(
-                 padding: EdgeInsets.all(30),
+                 padding: const EdgeInsets.all(30),
                  child: Column(
                    mainAxisAlignment: MainAxisAlignment.center,
                    crossAxisAlignment: CrossAxisAlignment.start,
                    children: [
                      Text("Get Started With", style: Head1Text(colorDarkBlue)),
-                     SizedBox(height: 1),
+                     const SizedBox(height: 1),
                      Text("Learn with jubayed islam", style: Head6Text(colorLightGray)),
-                     SizedBox(height: 20),
+                     const SizedBox(height: 20),
                      TextFormField(
                        onChanged: (Textvalue){
                          InputOnChange("email",Textvalue);
                        },
                        decoration: AppInputDecoration("Email Address"),
                      ),
-                     SizedBox(height: 20),
+                     const SizedBox(height: 20),
 
                      TextFormField(
                        onChanged: (Textvalue){
@@ -73,44 +70,39 @@ class _LoginScreenState extends State<LoginScreen> {
                        },
                        decoration: AppInputDecoration("Password"),
                      ),
-                     SizedBox(height: 20),
-                     Container(
-                       child: ElevatedButton(
-                         style: AppButtonStyle(),
-                         child: SuccessButtonChild('Login'),
-                         onPressed: (){
-                            FormOnSubmit();
-                         },
-                       ),
+                     const SizedBox(height: 20),
+                     ElevatedButton(
+                       style: AppButtonStyle(),
+                       child: SuccessButtonChild('Login'),
+                       onPressed: (){
+                          FormOnSubmit();
+                       },
                      ),
-                     SizedBox(height: 20),
-                     Container(
-                       alignment: Alignment.center,
-                       child: Column(
-                         children: [
-                           SizedBox(height: 20),
-                           InkWell(
-                               onTap: (){
-                                 Navigator.pushNamed(context, "/emailVerification");
-                               },
-                               child: Text('Forget Password?',style: Head7Text(colorLightGray),
-                               )
-                           ),
-                           SizedBox(height: 15),
-                           InkWell(
-                               onTap: (){
-                                 Navigator.pushNamed(context, "/registration");
-                               },
-                               child: Row(
-                                 mainAxisAlignment: MainAxisAlignment.center,
-                                 children: [
-                                   Text("Don't have a account? ",style: Head7Text(colorDarkBlue)),
-                                   Text("Sign Up",style: Head7Text(colorGreen),)
-                                 ],
-                               )
-                           )
-                         ],
-                       ),
+                     const SizedBox(height: 20),
+                     Column(
+                       children: [
+                         const SizedBox(height: 20),
+                         InkWell(
+                             onTap: (){
+                               Navigator.pushNamed(context, "/emailVerification");
+                             },
+                             child: Text('Forget Password?',style: Head7Text(colorLightGray),
+                             )
+                         ),
+                         const SizedBox(height: 15),
+                         InkWell(
+                             onTap: (){
+                               Navigator.pushNamed(context, "/registration");
+                             },
+                             child: Row(
+                               mainAxisAlignment: MainAxisAlignment.center,
+                               children: [
+                                 Text("Don't have a account? ",style: Head7Text(colorDarkBlue)),
+                                 Text("Sign Up",style: Head7Text(colorGreen),)
+                               ],
+                             )
+                         )
+                       ],
                      )
                    ],
                  ),

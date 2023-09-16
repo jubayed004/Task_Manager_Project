@@ -8,35 +8,39 @@ import 'screen/onboarding/loginscreen.dart';
 import 'screen/onboarding/splashscreen.dart';
 import 'screen/task/newtasklistscreen.dart';
 
-void main() async{
- await ReadUserData('token');
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  String?token = await ReadUserData('token');
+  if (token==null) {
+    runApp( MyApp('/login'));
+  }
+  else{
+    runApp( MyApp('/newTaskList'));
+  }
+
 }
-
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String firstRoute;
+   MyApp(this.firstRoute);
 
-  @override
+  @override                    
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Task Manager",
-      // theme: ThemeData(
-      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      //   useMaterial3: true,
-      // ),
-      initialRoute: '/login',
+      initialRoute: firstRoute,
       routes: {
 
-        '/':(context)=>SplashScreen(),
-        '/login':(context)=>LoginScreen(),
-        '/registration':(context)=>RegistrationScreen(),
-        '/emailVerification':(context)=>EmailVerificationScreen(),
-        '/pinVerification':(context)=>PinVerificationScreen(),
-        '/setPassword':(context)=>SetPasswordScreen(),
-        '/newTaskList':(context)=>NewTaskListScreen(),
+        '/':(context)=>const SplashScreen(),
+        '/login':(context)=>const LoginScreen(),
+        '/registration':(context)=>const RegistrationScreen(),
+        '/emailVerification':(context)=>const EmailVerificationScreen(),
+        '/pinVerification':(context)=>const PinVerificationScreen(),
+        '/setPassword':(context)=>const SetPasswordScreen(),
+        '/newTaskList':(context)=>const NewTaskListScreen(),
 
-      },                                                                                                    1
+      },
 
     );
   }
